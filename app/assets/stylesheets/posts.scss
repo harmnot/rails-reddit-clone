@@ -1,3 +1,15 @@
 // Place all the styles related to the Posts controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: https://sass-lang.com/
+.upvote, .downvote {
+  display: block;
+  width: 100%;
+  &.active {
+    color: #f0f0f0;
+  }
+
+  &:hover {
+    color: indianred;
+    cursor: pointer;
+  }
+}
