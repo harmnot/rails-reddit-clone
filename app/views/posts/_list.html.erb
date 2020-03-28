@@ -2,9 +2,9 @@
   <div class="card p-2 mb-2">
     <div class="d-flex flex-row">
       <div class="mr-3 ml-1 px-2 text-center">
-        <div id="vote-actions-<%= post.id %>" class="vote">
+        <div id="vote-actions-<%= post.id %>" class="vote" data-id="<%= post.id %>">
           <div class="fa fa-arrow-up upvote"> </div>
-          <div class="mx-auto"><span class=""> <%= post.score %> </span></div>
+          <span class="score"> <%= post.score %> </span>
           <div class="fa fa-arrow-down downvote"> </div>
         </div>
       </div>
