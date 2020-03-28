@@ -12,10 +12,10 @@
     <% end %>
     <div class="d-flex p-2 mt-3"> <h5> Popular Posts  </h5></div>
     <div id="mob">
-      <div class="d-flex p-2">
-        <div class=" my-2 flex-column">
+      <div class="col-lg-8 p-2">
+        <div class="my-2 flex-column">
           <%= render partial: "posts/list", locals: { posts: @posts } %>
-          </div>
+        </div>
       </div>
       <div class="d-flex p-2 flex-column">
         <div class="">
