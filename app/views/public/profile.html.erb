@@ -1,0 +1,18 @@
+<div class="container">
+  <div class="py-3 d-flex flex-row justify-content-around">
+    <div class="d-flex flex-column">
+      <%= render partial: "posts/list", locals: { posts: @post } %>
+    </div>
+    <div class="d-flex flex-column">
+      <div class="">
+        <h5><%= @profile.full_name %></h5>
+      </div>
+      <div class="">
+        <p> <%= @profile.username %></p>
+      </div>
+      <div class="mt-5">
+        <small> Active since: <%= @profile.created_at.strftime("%d-%m -%Y") %></small>
+      </div>
+    </div>
+  </div>
+</div>

@@ -1,0 +1,37 @@
+<div class="container">
+  <%= javascript_pack_tag 'is_mobile' %>
+  <div class="d-flex flex-column justify-content-center">
+    <% unless account_signed_in? %>
+      <div class="d-flex p-2 mt-3"> <h5> Trending  </h5></div>
+      <div class="d-flex flex-row justify-content-between mb-3">
+        <div class="p-2">Trending One</div>
+        <div class="p-2">Trending Twio</div>
+        <div class="p-2">Trending Three</div>
+        <div class="p-2">Trending Four</div>
+      </div>
+    <% end %>
+    <div class="d-flex p-2 mt-3"> <h5> Popular Posts  </h5></div>
+    <div id="mob">
+      <div class="d-flex p-2">
+        <div class=" my-2 flex-column">
+          <%= render partial: "posts/list", locals: { posts: @posts } %>
+          </div>
+      </div>
+      <div class="d-flex p-2 flex-column">
+        <div class="">
+          <p>Up and coming Communities</p>
+        </div>
+        <div class="card">
+          <ul class="list-group">
+            <% @communities.each do |community| %>
+              <li class="list-group-item"><%=  link_to community.name,  community %></li>
+            <% end %>
+          </ul>
+        </div>
+        <div class="my-2 mx-auto">
+          <%= link_to "View All", "/communities", class: "btn btn-warning" %>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

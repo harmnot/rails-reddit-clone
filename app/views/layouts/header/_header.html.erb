@@ -1,0 +1,28 @@
+<div class="container">
+  <div class="d-flex justify-content-between align-content-center py-2">
+    <div class="p-2">
+      <h2> <%= link_to "Reddit Clone" , root_path, style: "color:orange"%> </h2>
+    </div>
+    <div class="p-2 d-flex justify-content-around align-content-center">
+      <div class="<%= 'd-flex mx-2' if !account_signed_in? %>">
+        <% if account_signed_in? %>
+          <div class="dropdown">
+            <button class="btn btn-white dropdown-toggle" type="button" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+              <%= current_account.full_name %>
+            </button>
+            <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+              <%= link_to "Profile", "u/#{current_account.username}", class: "dropdown-item" %>
+              <%= link_to "Setting", edit_account_registration_path, class: "dropdown-item" %>
+              <%= link_to "Sign Out", "/accounts/sign_out", method: :delete , class: "dropdown-item" %>
+            </div>
+          </div>
+        <% else %>
+        <%= link_to "Log In", "/accounts/sign_in", class: "btn btn-outline-primary" %>
+      </div>
+      <div class="d-flex ml-2">
+        <%= link_to "Register", "/accounts/sign_up", class: "btn btn-primary" %>
+      </div>
+        <% end  %>
+    </div>
+  </div>
+</div>

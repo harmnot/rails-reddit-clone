@@ -1,0 +1,37 @@
+<div>
+  <% if @community %>
+    <div class="d-flex flex-row p-2">
+      <div class="p-2">
+        <div class="col-sm-8 mb-5">
+          <div class="p-2">
+            <h4> <%= link_to @community.name, @community.url, target: "_blank" %></h4>
+          </div>
+          <div class="p-2">
+            <small> <i><%= @community.rules %> </i></small>
+          </div>
+        </div>
+        <div class="col-sm-4 ml-2">
+          <%= render partial: "posts/list", locals: { posts: @posts }%>
+        </div>
+      </div>
+      <div class="p-2 col-sm-4">
+        <% if @is_subscribed  %>
+          <div class="py-2">
+            <%= link_to "Create post", new_community_post_path(@community), class: "btn btn-outline-primary mb-2" %>
+          </div>
+        <% else %>
+          <%= render partial: "communities/subscriber", locals: { community_id: @community.id } %>
+        <% end %>
+        <div class="card p-2">
+          <p class="h4">About this community</p>
+          <p> <%= @community.summary %> </p>
+          <p>
+            <%= pluralize @subscriber_count, "member" %>
+          </p>
+        </div>
+      </div>
+    </div>
+  <% elsif !@community %>
+    <div class="h6"> Can't found any </div>
+  <% end %>
+</div>

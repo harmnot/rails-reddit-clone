@@ -1,0 +1,6 @@
+<div class="py-3">
+  <%= form_for @subscription do |f| %>
+    <%= f.hidden_field :community_id, value: community_id %>
+    <%= f.submit "Join Community", class: "btn text-uppercase btn-success"%>
+  <% end %>
+</div>

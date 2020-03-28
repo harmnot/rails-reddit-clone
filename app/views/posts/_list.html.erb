@@ -1,0 +1,31 @@
+<% posts.each_with_index do |post, j| %>
+  <div class="">
+    <p class="mt-2"> <%=  link_to post.community.name, post.community %> Posted by
+      <% if account_signed_in?  %>
+        <% if post.account.username != current_account.username && !current_page?("/u/#{post.account.username}")%>
+          <%= link_to post.account.full_name, "u/#{post.account.username}" %>
+          <%= time_ago_in_words(post.created_at) %> ago </p>
+        <% elsif !current_page?("/u/#{post.account.username}")%>
+          you
+          <%= time_ago_in_words(post.created_at)%> ago </p>
+          <% else %>
+          <%= post.account.full_name %>
+          <%= time_ago_in_words(post.created_at) %> ago </p>
+        <% end %>
+      <% else %>
+        <% if current_page?("/u/#{post.account.username}") %>
+          <%= post.account.full_name %>
+          <%= time_ago_in_words(post.created_at)  %> ago </p>
+          <% else  %>
+          <%= link_to post.account.full_name, "u/#{post.account.username}" %>
+          <%= time_ago_in_words(post.created_at)  %> ago </p>
+        <% end %>
+      <% end %>
+    <h6> <%= link_to  post.title, community_post_path(post.community_id, post) %></h6>
+  </div>
+  <div class="">
+    <p>
+      <%= truncate post.body %>
+    </p>
+  </div>
+<% end %>

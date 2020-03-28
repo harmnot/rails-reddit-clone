@@ -1,0 +1,21 @@
+<div class="d-flex flex-row justify-content-around">
+  <div class="p-2">
+    <% if @communities.size > 0 %>
+      <% @communities.each_with_index do |community, index| %>
+        <div class="<%= index > 0 ? 'card p-2 my-3' : 'card p-2' %>">
+          <h3><%= link_to community.name, community %></h3>
+          <%= simple_format community.rules %>
+        </div>
+      <% end %>
+    <% else  %>
+      <h3> No Communities yet </h3>
+    <% end %>
+  </div>
+
+  <div class="p-2">
+    <% if account_signed_in? %>
+      <%= link_to "Create New Community", new_community_path, class: "btn btn-outline-primary" %>
+    <% end %>
+  </div>
+
+</div>

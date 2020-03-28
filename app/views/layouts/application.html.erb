@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>RedditClone</title>
+    <%= csrf_meta_tags %>
+    <%= csp_meta_tag %>
+
+    <%= stylesheet_link_tag 'application', media: 'all', 'data-turbolinks-track': 'reload' %>
+    <%= javascript_pack_tag 'application', 'data-turbolinks-track': 'reload' %>
+  </head>
+
+  <body>
+    <%= render partial: "layouts/header/header" %>
+
+    <div class="bg-light">
+      <div class="container">
+        <%= yield %>
+      </div>
+    </div>
+
+    <%= render partial: "layouts/footer/footer" %>
+  </body>
+</html>
