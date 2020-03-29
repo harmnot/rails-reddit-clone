@@ -13,4 +13,12 @@ class Account < ApplicationRecord
   def full_name
     "#{first_name} #{last_name}"
   end
+
+  def upvoted_post_ids
+    self.votes.where(upvote: true).pluck(:post_id)
+  end
+
+  def downvoted_post_ids
+    self.votes.where(upvote: false).pluck(:post_id)
+  end
 end

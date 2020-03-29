@@ -11,7 +11,7 @@ class CommunitiesController < ApplicationController
   end
 
   def show
-    @posts = @community.posts
+    @posts = @community.posts.limit(2).sort_by{ |p| p.score}.reverse
     @subscriber_count = @community.subscribers.count
     @is_subscribed = account_signed_in?  ? Subscription.where(account_id: current_account.id, community_id: @community.id).any? : false
     @subscription = Subscription.new
