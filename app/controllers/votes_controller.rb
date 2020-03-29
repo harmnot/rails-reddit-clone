@@ -3,9 +3,8 @@ class VotesController < ApplicationController
   def create
     # post_id = params[:vote][:post_id]
     post_id = params[:post_id]
-    #is_upvote = params[:upvote]
     vote = Vote.new
-    vote.upvote =params[:upvote]
+    vote.upvote = params[:upvote]
     vote.post_id = post_id
     vote.account_id = current_account.id
 
@@ -19,11 +18,10 @@ class VotesController < ApplicationController
         else
           #save new vote
           @success = vote.save ? true : false
-
-          @post = Post.find(post_id)
-          @total_upvotes = @post.upvotes
-          @total_downvotes = @post.downvotes
+          # @total_upvotes = @post.upvotes
+          # @total_downvotes = @post.downvotes
         end
+        @post = Post.find(post_id)
 
         render "votes/create"
       }
@@ -33,6 +31,6 @@ class VotesController < ApplicationController
   private
 
   def vote_params
-    params.require(:vote).permit(:upvote, :post_id)
+    params.require(:vote).permit(:up_vote, :post_id)
   end
 end

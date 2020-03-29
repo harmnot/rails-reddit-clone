@@ -9,7 +9,7 @@ Rails.application.routes.draw do
   resources :subscriptions
   resources :comments, only: [:create]
 
-  post "post/vote" => "vote#create"
+  post "post/vote" => "votes#create"
 
   root to: "public#index"
 end
